@@ -16,13 +16,14 @@ def about_view(request, *args, **kwargs):
   except: 
     percent = 0
   my_title = "My Page"
+  html_template = "home.html"
   my_context = {
     "page_title": my_title,
     "page_visit_count": page_qs.count(),
     "percent": percent,
     "total_visit_count": qs.count(),
   }
-  html_template = "home.html"
+  
   PageVisit.objects.create(path=request.path)
   return render(request, html_template, my_context)
 
